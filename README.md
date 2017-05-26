@@ -1,2 +1,2 @@
-Consul running on fedora docker image
+Consul running on alpine docker image
 
