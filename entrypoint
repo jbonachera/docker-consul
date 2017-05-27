@@ -4,5 +4,6 @@ if [[ -z "${SERVICE_NAME}" ]]; then
   exec /usr/local/bin/consul agent -server -ui -bootstrap -data-dir /var/lib/consul -config-dir /etc/consul
 else
   MIN_NODES_SIZE="${MIN_NODES_SIZE:-3}"
+  echo "swarm mode enabled: peers are behind $(dig +short $SERVICE_NAME) ip"
   exec /usr/local/bin/consul agent -server -retry-join $SERVICE_NAME -bootstrap-expect ${MIN_NODES_SIZE} -data-dir /var/lib/consul -config-dir /etc/consul
 fi
