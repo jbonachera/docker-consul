@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [[ -z "${SERVICE_NAME}" ]]; then
-  exec /usr/local/bin/consul agent -server -ui -bootstrap -data-dir /var/lib/consul -config-dir /etc/consul
+  exec /usr/local/bin/consul agent -server -ui -bootstrap -data-dir /var/lib/consul -config-dir /etc/consul -client "0.0.0.0"
 else
   MIN_NODES_SIZE="${MIN_NODES_SIZE:-3}"
   echo "swarm mode enabled: peers are behind $(dig +short $SERVICE_NAME) ip"
