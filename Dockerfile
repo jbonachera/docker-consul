@@ -1,7 +1,7 @@
 FROM jbonachera/alpine
 MAINTAINER Julien BONACHERA <julien@bonachera.fr>
 
-ENV VERSION=0.8.3
+ENV VERSION=0.8.4
 RUN apk -U add unzip curl bind-tools
 RUN mkdir /opt
 RUN curl -sL https://releases.hashicorp.com/consul/${VERSION}/consul_${VERSION}_linux_amd64.zip -o /opt/consul.zip && \
