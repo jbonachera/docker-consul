@@ -11,6 +11,12 @@ else
     NODES=$(dig +short tasks.${SERVICE_NAME})
     number_of_nodes=$(( $(echo $NODES | grep -o '\s' | wc -l) + 1 )) >/dev/null
     echo "we found $number_of_nodes nodes"
+    NODE_LIST=""
+    for node in $NODES; do
+      NODE_LIST="$NODE_LIST -retry-join $node"
+    done
   done
-  exec /usr/local/bin/consul agent -server -ui -retry-join $SERVICE_NAME -bootstrap-expect ${MIN_NODES_SIZE} -data-dir /var/lib/consul -config-dir /etc/consul -advertise $SELF_IP -client "0.0.0.0"
+  cmd="/usr/local/bin/consul agent -server -ui $NODE_LIST -bootstrap-expect ${MIN_NODES_SIZE} -data-dir /var/lib/consul -config-dir /etc/consul -advertise $SELF_IP -client 0.0.0.0"
+  echo "running $cmd"
+  exec $cmd
 fi
