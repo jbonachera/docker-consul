@@ -14,4 +14,5 @@ RUN curl -sL https://releases.hashicorp.com/consul/${VERSION}/consul_${VERSION}_
     chmod +x /usr/local/bin/consul && \
     mkdir /etc/consul /var/lib/consul /etc/templates && \
     chown consul: /etc/consul /var/lib/consul
+VOLUME ["/var/lib/consul"]
 COPY entrypoint /sbin/entrypoint
