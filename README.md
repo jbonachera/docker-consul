@@ -1,3 +1,3 @@
 Consul running on alpine docker image
 
-(Consul is configured to listen on a UNIX socket)
+This image supports swarm_mode by passing the SERVICE_NAME environment variable
