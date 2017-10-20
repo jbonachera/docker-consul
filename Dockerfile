@@ -3,6 +3,7 @@ MAINTAINER Julien BONACHERA <julien@bonachera.fr>
 
 ENTRYPOINT ["/sbin/entrypoint"]
 ENV VERSION=0.8.4
+ENV CHECKPOINT_DISABLE=1
 RUN apk -U add unzip curl bind-tools
 RUN mkdir /opt
 RUN adduser -S consul
