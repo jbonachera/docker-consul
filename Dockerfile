@@ -15,4 +15,5 @@ RUN curl -sL https://releases.hashicorp.com/consul/${VERSION}/consul_${VERSION}_
     mkdir /etc/consul /var/lib/consul /etc/templates && \
     chown consul: /etc/consul /var/lib/consul
 VOLUME ["/var/lib/consul"]
+ADD peers.json.j2 /etc/consul/
 COPY entrypoint /sbin/entrypoint
